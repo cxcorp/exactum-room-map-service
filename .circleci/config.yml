@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        -master
+    docker:
+      - image: circleci/node:10
+    
+    working_directory: ~/app
+
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: echo "No tests configured"
+      - deploy:
+          command: |
+            docker build -t 'cxcorp/exactum-room-map-service:latest' .
+            printf '%s' "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+            docker push 'cxcorp/exactum-room-map-service:latest'
