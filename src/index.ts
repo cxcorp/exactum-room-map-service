@@ -43,6 +43,19 @@ imageLoader
 
     app.use('/img/v1/rooms', makeRenderRouter(imageLoader))
 
+    app.get('/api/v1/rooms', cors({ methods: ['GET'] }), (req, res) => {
+      const allRooms = Object.values(config.DATA_FILE).reduce<string[]>(
+        (acc, rooms) => {
+          for (const room of rooms) {
+            acc.push(room.room)
+          }
+          return acc
+        },
+        []
+      )
+      res.json(allRooms)
+    })
+
     app.use('*', (req, res, next) => {
       res.status(404).render('404')
     })
