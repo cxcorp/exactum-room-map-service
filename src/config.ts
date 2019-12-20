@@ -1,7 +1,7 @@
 import path from 'path'
 import { DataFile } from './types'
 
-const { NODE_ENV, PORT, HOST } = process.env
+const { NODE_ENV, PORT, HOST, SENTRY_DSN, SENTRY_RELEASE } = process.env
 
 const parsedPort = PORT ? parseInt(PORT, 10) : NaN
 
@@ -15,5 +15,7 @@ export default {
   DATA_FILE,
   NODE_ENV,
   PORT: isNaN(parsedPort) ? 6755 : parsedPort,
-  HOST: HOST || '0.0.0.0'
+  HOST: HOST || '0.0.0.0',
+  SENTRY_DSN,
+  SENTRY_RELEASE
 }

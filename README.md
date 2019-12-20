@@ -15,7 +15,9 @@ Host behind a caching reverse proxy for best effect, server currently does not c
 
 ## Environment variables
 
-`HOST` and `PORT` - used to specify hostname and port onto which the server binds.
+* `HOST` and `PORT` - used to specify hostname and port onto which the server binds.
+* `SENTRY_DSN` - sentry's DSN for error tracking
+* `SENTRY_RELEASE` - release name passed to sentry, currently `.circleci/config.yml` injects it as `exactum-room-map-service@<git short hash>`.
 
 ## License
 tba

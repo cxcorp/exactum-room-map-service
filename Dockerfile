@@ -15,11 +15,14 @@ RUN yarn
 # build tools behind (saves us ~200 MB)
 FROM node:10-alpine
 WORKDIR /app
+EXPOSE 6755
 
 # install libs needed by canvas to work with images
 RUN apk add --no-cache cairo-dev pixman-dev giflib-dev libjpeg-turbo-dev pango-dev
 COPY --from=0 /usr/src/build/node_modules ./node_modules
 COPY . .
 
-EXPOSE 6755
+ARG sentry_release=dev
+ENV SENTRY_RELEASE=${sentry_release}
+
 CMD ["node_modules/.bin/ts-node", "src/index.ts"]

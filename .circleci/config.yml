@@ -15,6 +15,6 @@ jobs:
       - run: echo "No tests configured"
       - deploy:
           command: |
-            docker build -t 'cxcorp/exactum-room-map-service:latest' .
+            docker build -t 'cxcorp/exactum-room-map-service:latest' --build-arg "sentry_release=exactum-room-map-service@$CIRCLE_SHA1" .
             printf '%s' "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
             docker push 'cxcorp/exactum-room-map-service:latest'
