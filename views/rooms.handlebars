@@ -1,0 +1,17 @@
+<h1>Rooms</h1>
+<h2>Exactum</h3>
+
+    <div>
+        {{#each data}}
+        <div class="floor">
+            <h3>{{filename}}</h3>
+            <ul class="room-list">
+                {{#each rooms}}
+                <li class="room">
+                    <a target="_blank" href="{{roomImgHref room}}">{{room}}</a>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        {{/each}}
+    </div>
