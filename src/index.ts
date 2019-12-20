@@ -65,12 +65,12 @@ imageLoader
       res.status(500).render('500')
     }) as ErrorRequestHandler)
 
-    app.listen(config.PORT, e => {
+    app.listen(config.PORT, config.HOST, e => {
       if (e) {
         console.error(e)
         process.exit(1)
       }
-      console.log('Listening on port 6755')
+      console.log(`Listening on http://${config.HOST}:${config.PORT}`)
     })
   })
   .catch(e => {

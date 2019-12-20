@@ -1,7 +1,7 @@
 import path from 'path'
 import { DataFile } from './types'
 
-const { NODE_ENV, PORT } = process.env
+const { NODE_ENV, PORT, HOST } = process.env
 
 const parsedPort = PORT ? parseInt(PORT, 10) : NaN
 
@@ -14,5 +14,6 @@ export default {
   IMAGES_DIR,
   DATA_FILE,
   NODE_ENV,
-  PORT: isNaN(parsedPort) ? 6755 : parsedPort
+  PORT: isNaN(parsedPort) ? 6755 : parsedPort,
+  HOST: HOST || '0.0.0.0'
 }
