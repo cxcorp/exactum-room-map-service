@@ -29,6 +29,10 @@ imageLoader
     app.engine('handlebars', exphbs())
     app.set('view engine', 'handlebars')
 
+    app.get('/', (req, res) => {
+      res.redirect(302, '/rooms')
+    })
+
     app.get('/rooms', (req, res) => {
       res.render('rooms', {
         data: Object.entries(config.DATA_FILE).map(([filename, rooms]) => ({
